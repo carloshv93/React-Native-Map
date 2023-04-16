@@ -1,6 +1,6 @@
-import { StyleSheet, View, Text, Modal as RNModal } from "react-native";
+import { StyleSheet, View, Modal as RNModal } from "react-native";
 
-const Modal = ({ animationType, transparent, visible }) => {
+const Modal = ({ animationType, transparent, visible, children }) => {
   return (
     <RNModal
       animationType={animationType}
@@ -8,9 +8,7 @@ const Modal = ({ animationType, transparent, visible }) => {
       visible={visible}
     >
       <View style={styles.center}>
-        <View style={styles.modalView}>
-          <Text>Modal</Text>
-        </View>
+        <View style={styles.modalView}>{children}</View>
       </View>
     </RNModal>
   );
@@ -24,14 +22,12 @@ const styles = StyleSheet.create({
     justifyContent: "center",
   },
   modalView: {
-    margin: 20,
+    minWidth: "80%",
+    maxWidth: "90%",
+    minHeight: "15%",
+    maxHeight: "60%",
     backgroundColor: "white",
-    borderRadius: 4,
+    borderRadius: 10,
     padding: 20,
-    shadowColor: "#000",
-    shadowOffset: {
-      width: 0,
-      height: 3,
-    },
   },
 });
